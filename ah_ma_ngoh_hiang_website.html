@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ah Ma Ngoh Hiang - Traditional Singapore Delicacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #faf8f3 0%, #f5f2ed 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%);
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,215,0,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(160, 82, 45, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23D2B48C" width="1200" height="600"/><circle fill="%23CD853F" cx="200" cy="150" r="80" opacity="0.3"/><circle fill="%23DEB887" cx="800" cy="300" r="120" opacity="0.2"/><circle fill="%23F4A460" cx="1000" cy="100" r="60" opacity="0.4"/><rect fill="%23BC8F8F" x="100" y="400" width="200" height="100" rx="20" opacity="0.3"/><rect fill="%23D2B48C" x="700" y="450" width="150" height="80" rx="15" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q25,30 50,50 T100,50 V100 H0 Z" fill="rgba(255,215,0,0.1)"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            color: #FFD700;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #8B4513;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255,215,0,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            margin-top: 80px;
+        }
+
+        .section:first-of-type {
+            margin-top: 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Story Section */
+        .story {
+            background: #fff;
+            padding: 5rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .story-image {
+            text-align: center;
+        }
+
+        .story-image::before {
+            content: '👵🏻';
+            font-size: 8rem;
+            display: block;
+            margin-bottom: 1rem;
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.2));
+        }
+
+        /* Menu Section */
+        .menu {
+            background: linear-gradient(135deg, #f8f5f0 0%, #f0ebe4 100%);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #FFD700, #FFA500);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .menu-item h3 {
+            color: #8B4513;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #8B4513;
+            color: #fff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact h2 {
+            color: #FFD700;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info div {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background: #654321;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .story-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">阿嫲 Ah Ma</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ah Ma Ngoh Hiang</h1>
+                <p>Traditional Singapore Delicacy • 40+ Years Family Recipe</p>
+                <a href="#menu" class="cta-button">Discover Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="section story">
+        <div class="container">
+            <h2>Our Heritage Story</h2>
+            <div class="story-content">
+                <div class="story-text fade-in">
+                    <p>For over 40 years, our family has been preserving the authentic taste of traditional ngoh hiang, passed down by our beloved grandmother (Ah Ma).</p>
+                    
+                    <p>Each piece of ngoh hiang is carefully marinated using premium sauces, creating a perfect balance of flavors - meaty and loaded with fresh prawns, combined with savory crunchiness and a delicate sweetness from carefully selected vegetables.</p>
+                    
+                    <p>We believe in honoring our heritage while sharing these timeless flavors with food lovers across Singapore. Every bite tells the story of our family's dedication to quality and tradition.</p>
+                </div>
+                <div class="story-image fade-in">
+                    <div style="font-size: 1.2rem; color: #8B4513; margin-top: 2rem;">
+                        <strong>"Preserving Tradition,<br>One Roll at a Time"</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section menu">
+        <div class="container">
+            <h2>Our Specialties</h2>
+            <div class="menu-grid">
+                <div class="menu-item fade-in">
+                    <h3>🥢 Traditional Ngoh Hiang</h3>
+                    <p>Our signature five-spice meat roll with premium pork, fresh prawns, and water chestnuts wrapped in tofu skin and perfectly deep-fried.</p>
+                    <div class="price">From $6.00</div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <h3>🍤 Prawn Ngoh Hiang</h3>
+                    <p>Extra generous with succulent prawns, this version offers a more seafood-forward taste while maintaining our traditional marinade.</p>
+                    <div class="price">From $8.00</div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <h3>🥗 Vegetable Spring Rolls</h3>
+                    <p>Crispy rolls filled with fresh vegetables and glass noodles, perfect for vegetarian food lovers.</p>
+                    <div class="price">From $5.00</div>
+                </div>
+                
+                <div class="menu-item fade-in">
+                    <h3>🍜 Ngoh Hiang Set</h3>
+                    <p>Complete meal with assorted ngoh hiang, prawn crackers, and our special sweet and spicy dipping sauces.</p>
+                    <div class="price">From $12.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2>Visit Us Today</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <div>
+                        <span>📍</span>
+                        <span>Punggol, Singapore<br>(Exact location available upon order)</span>
+                    </div>
+                    <div>
+                        <span>📞</span>
+                        <span>Call us for orders and inquiries</span>
+                    </div>
+                    <div>
+                        <span>🕒</span>
+                        <span>Daily: 11:00 AM - 9:00 PM</span>
+                    </div>
+                    <div>
+                        <span>🚚</span>
+                        <span>Delivery available<br>Catering services for events</span>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <h3 style="margin-bottom: 1.5rem; color: #FFD700;">Get In Touch</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your order or inquiry..."></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ah Ma Ngoh Hiang. All rights reserved. | Traditional Recipe Since 1980s</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ahmangohhiang/" target="_blank">📘 Facebook</a>
+                <a href="https://www.instagram.com/ahmangohhiang/" target="_blank">📷 Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(160, 82, 45, 0.95) 50%, rgba(205, 133, 63, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
